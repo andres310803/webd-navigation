@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Detalle del Producto</title>
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<header>
+<h1>BlueStyle</h1>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="carrito.html">Carrito</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+        <li><a href="historial.html">Pedidos</a></li>
+    </ul>
+</nav>
+</header>
+
+<section class="detalle">
+
+<img src="img/camisa-hombre.jpg">
+
+<div>
+<h2>Camisa Casual Premium</h2>
+<p>Color Azul Marino</p>
+<p>Tallas S, M, L, XL</p>
+<h3>$29.99</h3>
+
+<button class="btn-primary" onclick="agregarCarrito()">
+    Agregar al Carrito
+</button>
+
+<script>
+function agregarCarrito() {
+
+    let producto = {
+        nombre: "Camisa Casual Premium",
+        precio: 29.99
+    };
+
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    carrito.push(producto);
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    alert("Producto agregado al carrito");
+}
+</script>
+
+</div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Carrito</title>
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+<header>
+<h1>BlueStyle</h1>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="carrito.html">Carrito</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+        <li><a href="historial.html">Pedidos</a></li>
+    </ul>
+</nav>
+</header>
+
+<section class="carrito">
+
+    <h2>Mi Carrito</h2>
+
+    <div id="lista-carrito"></div>
+
+    <h3 id="total"></h3>
+
+    <button class="btn-primary">
+        Finalizar Compra
+    </button>
+
+</section>
+
+<h2>Mi Carrito</h2>
+
+<p>Camisa Casual - $29.99</p>
+<p>Blusa Elegante - $34.99</p>
+
+<h3>Total: $64.98</h3>
+
+<button class="btn-primary">
+Finalizar Compra
+</button>
+<button class="btn-secondary" onclick="vaciarCarrito()">
+    Vaciar Carrito
+</button>
+
+</section>
+<script>
+
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+let lista = document.getElementById("lista-carrito");
+let total = 0;
+
+carrito.forEach(producto => {
+
+    lista.innerHTML += `
+        <p>
+            ${producto.nombre} - $${producto.precio}
+        </p>
+    `;
+
+    total += producto.precio;
+
+});
+
+document.getElementById("total").innerText =
+    "Total: $" + total.toFixed(2);
+function vaciarCarrito(){
+    localStorage.removeItem("carrito");
+    location.reload();
+}
+
+</script>
+</body>
+</html>
